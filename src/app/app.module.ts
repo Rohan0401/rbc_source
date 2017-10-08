@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { Ng2UploaderModule } from 'ng2-uploader';
+
+
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -25,7 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2UploaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

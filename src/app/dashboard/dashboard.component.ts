@@ -1,142 +1,55 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as Chartist from 'chartist';
 
+
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+
 export class DashboardComponent implements OnInit {
 
 success : string = "Txn success";
 
-count : number = 20000;
-value : number = 0;
 
-btc : number;
-btc_price : number = 4283.97; 
-btc_value : number = 0;  
 
-eth : number;
-eth_price : number = 297.89; 
-eth_value : number = 0;  
-
-bhc : number;
-bhc_price : number = 53.94; 
-bhc_value : number = 0; 
-
-xrp : number;
-xrp_price : number = 0.198; 
-xrp_value : number = 0; 
-
-investment : number = 0;
-
-     @Output() counterChange :  EventEmitter<number>;
-     @Output() valueChange :  EventEmitter<number>;
-     @Output() invChange :  EventEmitter<number>;
         constructor(){
          
-            this.counterChange = new EventEmitter();
-            this.valueChange = new EventEmitter();
-         
+
         }
      
-     @Input() 
-        get counter(){
-            return this.count; 
-        }
-
-        add_btc(){
-        this.btc_value = this.btc_price * this.btc;
-        }
-
-        add_eth(){
-        this.eth_value = this.eth_price * this.eth;
-        }
-
-        add_bhc(){
-        this.bhc_value = this.bhc_price * this.bhc;
-        }
-
-        add_xrp(){
-        this.xrp_value = this.xrp_price * this.xrp;
-        }
-
-        
-
-
-        buy_all(){
-        this.value = this.btc_value + this.eth_value + this.bhc_value + this.xrp_value;
-        this.count = this.count - this.value;
-        this.counterChange.emit(this.count);
-        this.valueChange.emit(this.value);
-        this.investment = this.investment + this.value;
-        this.invChange.emit(this.investment);
-        console.log(this.success);
-        }
-
-        sell_all(){
-        this.value = this.btc_value + this.eth_value + this.bhc_value + this.xrp_value;
-        this.count = this.count + this.value;
-        this.counterChange.emit(this.count);        
-        this.valueChange.emit(this.value);
-        this.investment = 0;
-        this.invChange.emit(this.investment);
-        }
-
-        submit(){
-        this.value = this.btc_value + this.eth_value + this.bhc_value + this.xrp_value;
-        }
-
-        buy_btc(){
-            this.btc_value = this.btc_price * this.btc;
-            this.count = this.count - this.btc_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        sell_btc(){
-            this.btc_value = this.btc_price * this.btc;
-            this.count = this.count + this.btc_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        buy_eth(){
-            this.eth_value = this.eth_price * this.eth;
-            this.count = this.count - this.eth_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        sell_eth(){
-            this.eth_value = this.eth_price * this.eth;
-            this.count = this.count + this.eth_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        buy_bhc(){
-            this.bhc_value = this.bhc_price * this.bhc;
-            this.count = this.count - this.bhc_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        sell_bhc(){
-            this.bhc_value = this.bhc_price * this.bhc;
-            this.count = this.count + this.bhc_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        buy_xrp(){
-            this.xrp_value = this.xrp_price * this.xrp;
-            this.count = this.count - this.xrp_value; 
-            this.counterChange.emit(this.count);
-        }
-
-        sell_xrp(){
-            this.xrp_value = this.xrp_price * this.xrp;
-            this.count = this.count + this.xrp_value; 
-            this.counterChange.emit(this.count);
-        }
+ uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+  options: Object = {
+    url: 'http://localhost:10050/upload'
+  };
+  sizeLimit = 2000000;
+ 
+  handleUpload(data): void {
+    if (data && data.response) {
+      data = JSON.parse(data.response);
+      this.uploadFile = data;
+    }
+  }
+ 
+  fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+ 
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File is too large');
+    }
+  }
 
 
+
+ 
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;

@@ -1,188 +1,50 @@
 <div class="main-content">
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">account_balance</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Balance</p>
-                            <h3 class="title">${{count}}</h3>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">account_balance_wallet </i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Investment</p>
-                            <h3 class="title">${{investment}}</h3>
-                        </div>
-                       
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">trending_up</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Forcasting</p>
-                            <h3 class="title">7 days</h3>
-                          
 
-                        </div>
-                      
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats" >
-                        <div class="card-header" data-background-color="blue">
-                            <i class="material-icons">star_rate</i>
-                        </div>
-                        <div class="card-content">
-                            <p class="category">Today's Star</p>
-                            <h3 class="title">Bitcoin</h3>
-                        </div>
-                      
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                
-
-                <div>
-                    
-                           <iframe width="900" height="450" frameborder="0" scrolling="no" src="//plot.ly/~RohanVardhan/8.embed"></iframe>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="title">Prices for top cryptocurrencies</h4>
-                            <p class="category"></p>
-                        </div>
-                        <div class="card-footer">
-                            
-                        
-                </div>
-
-                
-            </div>
-
-            <div class="row">
-                <div>
-                    <div class="card card-nav-tabs" >
-                        <div class="card-header" data-background-color="blue">
-                            
-                    
-                            <h4 class="title">Buy / Sell</h4>
-                            <p class="category"></p>
-                       
-                                    
-                                   
-                                
-                        </div>
-
-                        <div class="card-content">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="profile">
-                                    <table class="table">
-
-
-                                        <thead class="text-warning">
-                                    <tr>
-                                       
-                                        <th>Name</th>
-                                        <th>Closing Price</th>
-                                        <th>Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Bitcoin</td>
-                                        <td>${{btc_price}}</td>
-                                        <td><input type="number" min="0" [(ngModel)]='btc'/></td>
-                                        <td><button type=button class="btn btn-primary" style="background-color: #3364FF" (click)='add_btc()'>Add to Cart</button></td>
-                                        <td>{{btc_value}}</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>Ethereum</td>
-                                        <td>${{eth_price}}</td>
-                                        <td><input type="number" [(ngModel)]='eth'/></td>
-                                        <td><button type=button class="btn btn-primary" style="background-color: #3364FF" (click)='add_eth()'>Add to Cart</button></td>
-                                        <td>{{eth_value}}</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>Litecoin</td>
-                                        <td>${{bhc_price}}</td>
-                                        <td><input type="number" [(ngModel)]='bhc'/></td>
-                                        <td><button type=button class="btn btn-primary" style="background-color: #3364FF" (click)='add_bhc()'>Add to Cart</button></td>
-                                        <td>{{bhc_value}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ripple</td>
-                                        <td>${{xrp_price}}</td>
-                                        <td><input type="number" [(ngModel)]='xrp'/></td>
-                                        <td><button type=button class="btn btn-primary" style="background-color: #3364FF" (click)='add_xrp()'>Add to Cart</button></td>
-                                        <td>{{xrp_value}}</td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{btc_value + eth_value + bhc_value + xrp_value}}</td>
-                                    </tr>   
-                                    <tr>
-                                        
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><button type=button onclick="myFunction()" class="btn btn-primary" style="background-color: #3364FF" (click)='buy_all()'>Buy</button>    <button type=button onclick="myFunction()" class="btn btn-primary" style="background-color: #3364FF"(click)='sell_all()'>Sell</button></td>
-                                        <td>{{value}}</td>
-                                    </tr>
-                                </tbody>
-                                    </table>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container">
 
 
 
-                <div class="row">
-                    <div class="card" >
-                        <div class="card-header" data-background-color="blue">
-                            <h4 class="title">News Feed</h4>
-                            <p class="category"></p>
-                        </div>
-                        <div class="card-content table-responsive">
-                            <table class="table table-hover">
-
-                                <ul>
-                                <li><a href="http://www.reuters.com/article/us-rbc-blockchain/exclusive-royal-bank-of-canada-using-blockchain-for-u-s-canada-payments-executive-idUSKCN1C237N">Royal Bank of Canada using blockchain for U.S./Canada payments - executive</a></li>
-                                <li><a href="https://thenextweb.com/contributors/2017/09/29/bitcoin-ethereum-will-soon-everywhere-reals/#.tnw_Jmt8a6Yb">Why Bitcoin and Ethereum will soon be everywhere</a></li>
-                                <li><a href="https://cointelegraph.com/news/japan-issues-cryptocurrency-exchange-licenses">Japan Issues Cryptocurrency Exchange Licenses</a></li>
-                                <li><a href="http://www.atimes.com/cryptocurrencies-china-blocked-initial-coin-offerings/">Cryptocurrencies: why China blocked initial coin offerings</a></li>
-                                <li><a href="https://www.cryptocoinsnews.com/ethereum-bitcoin-prices-end-week-high-note/">Ethereum, Bitcoin Prices End the Week on a High Note</a></li>
-                                </ul>
-                                
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href>Files Upload</a>
             </div>
         </div>
+
+<input type="file"
+       value="Upload Resume" 
+       ngFileSelect
+       [options]="options"
+       (onUpload)="handleUpload($event)"
+       (beforeUpload)="beforeUpload($event)">
+ 
+<!-- drag & drop file example-->
+<style>
+  .file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+</style> 
+
+<div ngFileDrop
+     [options]="options"
+     (onUpload)="handleUpload($event)"
+     [ngClass]="{'file-over': hasBaseDropZoneOver}"
+     (onFileOver)="fileOverBase($event)"
+     (beforeUpload)="beforeUpload($event)">
 </div>
-
-
+ 
+<div>
+Response: {{ uploadFile | json }}
+</div>
+            
+            <!--<div class="col-md-4">
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" id="files" name="files" multiple="multiple" />
+                    <p style="text-align: right; margin-top: 20px;">
+                        <input type="submit" value="Upload Resume" class="btn btn-lg btn-primary" style="background-color: #3364FF" />
+                    </p>
+                </form>
+            </div>-->
+            
+        </div>
+        
+            </div>
+        
